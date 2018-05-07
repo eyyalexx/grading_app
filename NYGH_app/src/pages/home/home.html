@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Observation Record</h1>
+ 
+    <ion-item>
+      <ion-label color="primary" stacked>Student Name</ion-label>
+      <ion-input type="text" placeholder="" [(ngModel)]="myInput"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <button (click)="btnAddClicked()" ion-button full round color="light">Add Record</button>
+  
+</ion-content>
