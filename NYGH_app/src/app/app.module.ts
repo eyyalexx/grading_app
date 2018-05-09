@@ -1,4 +1,5 @@
 
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -12,8 +13,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
+
+
+import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { StudentProvider } from '../providers/student/student';
+import { AccessStudentsComponent } from '../components/access-students/access-students';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB-7o0tKCzuXepyOZK7MxRg2gqyJfJpgmw",
@@ -30,13 +38,18 @@ var firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AccessStudentsComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    HttpClientModule,
+    HttpModule,
+ 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +62,8 @@ var firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StudentProvider
   ]
 })
 export class AppModule {}
